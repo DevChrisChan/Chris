@@ -19,7 +19,25 @@ body {
   font-family: system-ui;
   background-color: white;
   text-align: center;
+	body { 
+        background: #2f3236; 
+        font-family: system-ui;
+        color: white;
+        text-align: center;
+        opacity: 0;
+        animation: chrischan 1s ease-in-out forwards;
+        animation-delay: 0s;
+      }
+
+@keyframes chrischan {
+from {
+  opacity:0;
 }
+to {
+  opacity:1;
+}
+}
+
 
 }
 .button {
