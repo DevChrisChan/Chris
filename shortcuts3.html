@@ -27,6 +27,9 @@
 <style>
     
 	body {
+		font-family: system-ui;
+  background-color: white;
+  text-align: center;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
@@ -43,25 +46,6 @@
         background-position: 0% 50%;
     }
 }
-	
-	.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 12px 16px;
-  z-index: 1;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
 
 		</style>
 
@@ -76,13 +60,7 @@
 
 <div class="w3-bar w3-black">
 <a href="" class="w3-bar-item w3-button">Home</a>
- <a href="shortcuts" class="w3-bar-item w3-button w3-right"><div class="dropdown">
-  <span style="color:#297cdc;">S</span><span style="color:#3e78d0;">h</span><span style="color:#5375c4;">o</span><span style="color:#6871b8;">r</span><span style="color:#7d6eac;">t</span><span style="color:#916aa0;">c</span><span style="color:#a66694;">u</span><span style="color:#bb6388;">t</span><span style="color:#d05f7c;">s</span>
-  <div class="dropdown-content">
-  <p>Shortcuts</p>
-
-  </div>
-</div>
+ <a href="shortcuts" class="w3-bar-item w3-button w3-right"> <div><span style="color:#297cdc;">S</span><span style="color:#3e78d0;">h</span><span style="color:#5375c4;">o</span><span style="color:#6871b8;">r</span><span style="color:#7d6eac;">t</span><span style="color:#916aa0;">c</span><span style="color:#a66694;">u</span><span style="color:#bb6388;">t</span><span style="color:#d05f7c;">s</span></div>
 	<a href="bots" class="w3-bar-item w3-button w3-right">Discord Bots</a></div>
 	
 
