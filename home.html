@@ -19,11 +19,14 @@
  		 margin-bottom: 5px;
 	 }
 	 
-	 .topnav {
-  overflow: auto;
+.topnav {
+  overflow: hidden;
   border-radius: 8px;
   background-color: #333;
-  float: middle;
+}
+
+.topnav a {
+  float: left;
   display: block;
   color: #AAAAAA;
   text-align: center;
@@ -31,11 +34,16 @@
   text-decoration: none;
   font-size: 17px;
   font-weight: 400;
-  display: block;
- position: sticky;
-    top: 0px;
-margin: 5px;
-	 }
+}
+
+.topnav a:hover {
+  color: #d76683;
+}
+
+.topnav a.active {
+  color: white;
+}
+
 
 	</style>
   
