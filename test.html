@@ -6,126 +6,115 @@
   
   <title>ChrisChan</title>
 <style>
-* {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-        }
-
-        body {
-            font-family: 'Josefin Sans', sans-serif;
-        }
-
-        .navbar {
-            font-size: 18px;
-            background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            padding-bottom: 10px;
-        }
-
-        .main-nav {
-            list-style-type: none;
-            display: none;
-        }
-
-        .nav-links,
-        .logo {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .main-nav li {
-            text-align: center;
-            margin: 15px auto;
-        }
-
-        .logo {
-            display: inline-block;
-            font-size: 22px;
-            margin-top: 10px;
-            margin-left: 20px;
-        }
-
-        .navbar-toggle {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            cursor: pointer;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 24px;
-        }
-
-        .active {
-            display: block;
-        }
-
-        @media screen and (min-width: 768px) {
-            .navbar {
-                display: flex;
-                justify-content: space-between;
-                padding-bottom: 0;
-                height: 70px;
-                align-items: center;
-            }
-
-            .main-nav {
-                display: flex;
-                margin-right: 30px;
-                flex-direction: row;
-                justify-content: flex-end;
-            }
-
-            .main-nav li {
-                margin: 0;
-            }
-
-            .nav-links {
-                margin-left: 40px;
-            }
-
-            .logo {
-                margin-top: 0;
-            }
-
-            .navbar-toggle {
-                display: none;
-            }
-
-            .logo:hover,
-            .nav-links:hover {
-                color: rgba(255, 255, 255, 1);
-            }
-        }
         
+@import url('https://fonts.googleapis.com/css?family=DM+Sans:500,700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/debut_light.png");
+}
+
+.nav {
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 0 20px;
+  border-radius: 40px;
+  box-shadow: 0 10px 40px rgba(159, 162, 177, .8);
+}
+
+.nav-item {
+  color: #83818c;
+  padding: 20px;
+  text-decoration: none;
+  transition: .3s;
+  margin: 0 6px;
+  z-index: 1;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  position: relative;
+  
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #dfe2ea;
+    border-radius: 8px 8px 0 0;
+    opacity: 0;
+    transition: .3s;
+  }
+}
+
+.nav-item:not(.is-active):hover:before {
+  opacity: 1;
+  bottom: 0;
+}
+
+
+.nav-item:not(.is-active):hover { color: #333; }
+
+.nav-indicator {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  transition: .4s;
+  height: 5px;
+  z-index: 1;
+  border-radius: 8px 8px 0 0;
+}
+
+@media (max-width: 580px) {
+  .nav { overflow: auto; }
+}
+
+
         </style>
         <body>
-        <nav class="navbar">
-        <span class="navbar-toggle" id="js-navbar-toggle">
-            <i class="fas fa-bars"></i>
-        </span>
-        <a href="#" class="logo">logo</a>
-        <ul class="main-nav" id="js-menu">
-            <li>
-                <a href="#" class="nav-links">Home</a>
-            </li>
-            <li>
-                <a href="#" class="nav-links">Products</a>
-            </li>
-            <li>
-                <a href="#" class="nav-links">About Us</a>
-            </li>
-            <li>
-                <a href="#" class="nav-links">Contact Us</a>
-            </li>
-            <li>
-                <a href="#" class="nav-links">Blog</a>
-            </li>
-        </ul>
-    </nav>
+        <nav class="nav">
+  <a href="#" class="nav-item is-active" active-color="orange">Home</a>
+  <a href="#" class="nav-item" active-color="green">About</a>
+  <a href="#" class="nav-item" active-color="blue">Testimonials</a>
+  <a href="#" class="nav-item" active-color="red">Blog</a>
+  <a href="#" class="nav-item" active-color="rebeccapurple">Contact</a>
+  <span class="nav-indicator"></span>
+</nav>
+  </body>
     
-    <script>let mainNav = document.getElementById('js-menu');
-let navBarToggle = document.getElementById('js-navbar-toggle');
+    <script>const indicator = document.querySelector('.nav-indicator');
+const items = document.querySelectorAll('.nav-item');
 
-navBarToggle.addEventListener('click', function () {
-  mainNav.classList.toggle('active');
+function handleIndicator(el) {
+  items.forEach(item => {
+    item.classList.remove('is-active');
+    item.removeAttribute('style');
+  });
+  
+  indicator.style.width = `${el.offsetWidth}px`;
+  indicator.style.left = `${el.offsetLeft}px`;
+  indicator.style.backgroundColor = el.getAttribute('active-color');
+
+  el.classList.add('is-active');
+  el.style.color = el.getAttribute('active-color');
+}
+
+
+items.forEach((item, index) => {
+  item.addEventListener('click', (e) => { handleIndicator(e.target)});
+  item.classList.contains('is-active') && handleIndicator(item);
 });</script>
